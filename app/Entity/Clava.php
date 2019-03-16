@@ -11,40 +11,12 @@ namespace RPGImusica\Entity;
 
 class Clava extends Arma
 {
-    protected $bonusAtaque = 1;
-    protected $bonusDefesa = 0;
-    protected $dado;
 
-    public function __construct( Dado $dado)
+    public function __construct(array $attributes = [], Dado $dado)
     {
-        $this->dado = $dado;
+        parent::__construct($attributes, $dado);
+        $this->bonus_ataque = 1;
+        $this->bonus_defesa = 0;
     }
-
-    /**
-     * @return int
-     */
-    public function getBonusAtaque(): int
-    {
-        return $this->bonusAtaque;
-    }
-
-    /**
-     * @return int
-     */
-    public function getBonusDefesa(): int
-    {
-        return $this->bonusDefesa;
-    }
-
-    /**
-     * @return Dado
-     */
-    public function getDado(): Dado
-    {
-        return $this->dado;
-    }
-
-
-
 
 }

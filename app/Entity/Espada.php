@@ -9,39 +9,13 @@
 namespace RPGImusica\Entity;
 
 
-class Espada extends Arma
-{
-    protected $bonusAtaque = 2;
-    protected $bonusDefesa = 1;
-    protected $dado;
+class Espada extends Arma{
 
-    public function __construct( Dado $dado)
+    public function __construct(array $attributes = [], Dado $dado)
     {
-        $this->dado = $dado;
-    }
-
-    /**
-     * @return int
-     */
-    public function getBonusAtaque(): int
-    {
-        return $this->bonusAtaque;
-    }
-
-    /**
-     * @return int
-     */
-    public function getBonusDefesa(): int
-    {
-        return $this->bonusDefesa;
-    }
-
-    /**
-     * @return Dado
-     */
-    public function getDado(): Dado
-    {
-        return $this->dado;
+        parent::__construct($attributes, $dado);
+        $this->bonus_ataque = 2;
+        $this->bonus_defesa = 1;
     }
 
 

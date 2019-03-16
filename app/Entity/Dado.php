@@ -1,7 +1,11 @@
 <?php
 namespace RPGImusica\Entity;
 
-class Dado
+use Illuminate\Database\Eloquent\Model;
+
+class Dado extends Model
 {
+    protected $fillable = ['nome','valor'];
+
 
 }

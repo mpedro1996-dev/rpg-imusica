@@ -11,16 +11,13 @@ namespace RPGImusica\Entity;
 
 class Orc extends Raca
 {
-    protected $vida = 20;
-    protected $forca = 2;
-    protected $agilidade = 0;
-    private $arma;
-
-    public function __construct( Arma $arma)
+    public function __construct(array $attributes = [], Arma $arma)
     {
-        $this->arma = $arma;
+        parent::__construct($attributes, $arma);
+        $this->vida = 20;
+        $this->forca = 2;
+        $this->agilidade = 0;
     }
-
 
 
 }

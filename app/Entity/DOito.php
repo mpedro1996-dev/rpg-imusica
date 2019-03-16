@@ -11,5 +11,10 @@ namespace RPGImusica\Entity;
 
 class DOito extends Dado
 {
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+        $this->valor = 8;
+    }
 
 }

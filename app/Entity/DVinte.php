@@ -11,5 +11,10 @@ namespace RPGImusica\Entity;
 
 class DVinte extends Dado
 {
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+        $this->valor = 20;
+    }
 
 }

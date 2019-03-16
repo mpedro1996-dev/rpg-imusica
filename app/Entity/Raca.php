@@ -9,34 +9,17 @@
 namespace RPGImusica\Entity;
 
 
-class Raca
+use Illuminate\Database\Eloquent\Model;
+
+class Raca extends Model
 {
-    protected $vida;
-    protected $forca;
-    protected $agilidade;
+    protected $fillable = ['vida','forca','agilidade','arma_id'];
 
-    /**
-     * @return mixed
-     */
-    public function getVida()
-    {
-        return $this->vida;
-    }
 
-    /**
-     * @return mixed
-     */
-    public function getForca()
+    public function __construct(array $attributes = [], Arma $arma)
     {
-        return $this->forca;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAgilidade()
-    {
-        return $this->agilidade;
+        parent::__construct($attributes);
+        $this->arma_id = $arma->id;
     }
 
 

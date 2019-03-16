@@ -9,38 +9,18 @@
 namespace RPGImusica\Entity;
 
 
-class Personagem
+use Illuminate\Database\Eloquent\Model;
+
+class Personagem extends Model
 {
-    private $nome;
+    protected $fillable = ['nome','raca_id'];
 
-    private $raca;
-
-    public function __construct(Raca $raca)
+    public function __construct(array $attributes = [], Raca $raca)
     {
-        $this->raca = $raca;
+        parent::__construct($attributes);
+        $this->raca_id = $raca->id;
 
     }
-
-    /**
-     * @return mixed
-     */
-    public function getNome()
-    {
-        return $this->nome;
-    }
-
-    /**
-     * @param mixed $nome
-     * @return Personagem
-     */
-    public function setNome($nome)
-    {
-        $this->nome = $nome;
-        return $this;
-    }
-
-
-
 
 
 }

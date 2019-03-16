@@ -9,10 +9,16 @@
 namespace RPGImusica\Entity;
 
 
-class Arma
+use Illuminate\Database\Eloquent\Model;
+
+class Arma extends Model
 {
-    protected $bonusAtaque;
-    protected $bonusDefesa;
-    protected $dado;
+    protected $fillable = ['bonus_ataque','bonus_defesa','dado_id'];
+
+    public function __construct(array $attributes = [],Dado $dado)
+    {
+        parent::__construct($attributes);
+        $this->dado_id = $dado->id;
+    }
 
 }
