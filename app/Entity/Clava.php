@@ -15,6 +15,7 @@ class Clava extends Arma
     public function __construct(array $attributes = [], Dado $dado)
     {
         parent::__construct($attributes, $dado);
+        $this->nome = 'Clava';
         $this->bonus_ataque = 1;
         $this->bonus_defesa = 0;
     }

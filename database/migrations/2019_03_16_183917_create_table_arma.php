@@ -16,6 +16,8 @@ class CreateTableArma extends Migration
         Schema::create('armas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome');
+            $table->integer("bonus_ataque");
+            $table->integer("bonus_defesa");
             $table->unsignedBigInteger('dado_id');
             $table->timestamps();
 

@@ -30,8 +30,10 @@ class PersonagemController extends Controller
      */
     public function store(Request $request)
     {
-        $nome = $request->get('nome');
-
+        $dado = Dado::where('nome','D6')->first();
+        $espada = new Espada([],$dado);
+        VarDumper::dump($espada);
+        exit;
     }
 
     /**

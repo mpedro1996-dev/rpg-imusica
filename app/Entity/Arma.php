@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Arma extends Model
 {
+    protected $table ='armas';
     protected $fillable = ['nome','bonus_ataque','bonus_defesa','dado_id'];
 
     public function __construct(array $attributes = [],Dado $dado)
