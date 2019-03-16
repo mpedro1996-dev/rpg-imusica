@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Raca extends Model
 {
-    protected $fillable = ['vida','forca','agilidade','arma_id'];
+    protected $fillable = ['tipo','vida','forca','agilidade','arma_id'];
 
 
     public function __construct(array $attributes = [], Arma $arma)
