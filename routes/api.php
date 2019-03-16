@@ -18,11 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix'=>'personagem'],function (){
-    Route::get('/',function (){
-        $personagem = new \RPGImusica\Entity\Personagem(new \RPGImusica\Entity\Humano(new \RPGImusica\Entity\Espada(new \RPGImusica\Entity\DSeis())));
-        \Symfony\Component\VarDumper\VarDumper::dump($personagem);
-        exit;
-    });
+    Route::post("/criar","PersonagemController@store");
 });
 
 Route::group(['prefix'=>'iniciativa'],function (){

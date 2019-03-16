@@ -17,6 +17,7 @@ class Orc extends Raca
         $this->vida = 20;
         $this->forca = 2;
         $this->agilidade = 0;
+        $this->tipo = 'orc';
     }
 
 

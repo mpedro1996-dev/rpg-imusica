@@ -14,6 +14,7 @@ class DSeis extends Dado
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
+        $this->nome = "D6";
         $this->valor = 6;
     }
 

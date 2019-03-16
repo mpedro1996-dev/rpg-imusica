@@ -14,6 +14,7 @@ class DOito extends Dado
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
+        $this->nome = "D8";
         $this->valor = 8;
     }
 

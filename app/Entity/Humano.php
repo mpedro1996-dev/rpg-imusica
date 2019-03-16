@@ -18,6 +18,8 @@ class Humano extends Raca
         $this->vida = 12;
         $this->forca = 1;
         $this->agilidade = 2;
+        $this->tipo = 'humano';
+
     }
 
 

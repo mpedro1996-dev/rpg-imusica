@@ -14,6 +14,7 @@ class DVinte extends Dado
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
+        $this->nome = "D20";
         $this->valor = 20;
     }
 
