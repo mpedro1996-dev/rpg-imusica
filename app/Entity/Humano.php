@@ -12,11 +12,17 @@ namespace RPGImusica\Entity;
 class Humano extends Raca
 {
     protected $vida = 12;
+    protected $forca = 1;
+    protected $agilidade = 2;
+
     private $arma;
 
     public function __construct( Arma $arma)
     {
         $this->arma = $arma;
     }
+
+
+
 
 }
