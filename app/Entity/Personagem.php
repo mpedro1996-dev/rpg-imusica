@@ -10,6 +10,8 @@ namespace RPGImusica\Entity;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+use Symfony\Component\VarDumper\VarDumper;
 
 class Personagem extends Model
 {
@@ -23,6 +25,15 @@ class Personagem extends Model
             $this->raca_id = $raca->id;
         }
 
+
+    }
+
+
+    public static function criarPersonagem(array $obj = [], Raca $raca){
+        DB::transaction(function () use ($obj,$raca){
+            $personagem = new Personagem($obj,$raca);
+            $personagem->save();
+        });
     }
 
 
