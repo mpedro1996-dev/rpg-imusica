@@ -25,6 +25,10 @@ class Raca extends Model
         }
     }
 
+    public function arma(){
+        return $this->belongsTo(Arma::class,'arma_id','id');
+    }
+
     public function pegarRaca($tipo = null){
 
         if($tipo!=null){

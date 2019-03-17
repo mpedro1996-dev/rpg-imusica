@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['prefix'=>'personagem'],function (){
     Route::post("/criar","PersonagemController@store");
+    Route::get("/{id}","PersonagemController@show");
 });
 
 Route::group(['prefix'=>'iniciativa'],function (){

@@ -58,8 +58,8 @@ class PersonagemController extends Controller
             /** @var Humano $humano */
             $humano = $this->humano->pegarRaca();
 
-            Personagem::criarPersonagem($personagemHumano,$humano);
-            Personagem::criarPersonagem($personagemOrc,$orc);
+            $this->personagem->criarPersonagem($personagemHumano,$humano);
+            $this->personagem->criarPersonagem($personagemOrc,$orc);
 
 
 
@@ -79,7 +79,10 @@ class PersonagemController extends Controller
      */
     public function show($id)
     {
-        //
+        $personagem = $this->personagem->getPersonagemJson($id);
+
+        return response()->json($personagem,200);
+
     }
 
     /**

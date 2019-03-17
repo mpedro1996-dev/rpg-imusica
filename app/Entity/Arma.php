@@ -25,6 +25,10 @@ class Arma extends Model
         }
     }
 
+    public function dado(){
+        return $this->belongsTo(Dado::class,'dado_id','id');
+    }
+
     public function pegarArma($nome = null){
         if($nome != null){
             return $this->where('nome',$nome)->first();

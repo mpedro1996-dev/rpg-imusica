@@ -28,12 +28,22 @@ class Personagem extends Model
 
     }
 
+    public function raca(){
+        return $this->belongsTo(Raca::class,'raca_id','id');
+    }
 
-    public static function criarPersonagem(array $obj = [], Raca $raca){
+
+
+    public function criarPersonagem(array $obj = [], Raca $raca){
         DB::transaction(function () use ($obj,$raca){
             $personagem = new Personagem($obj,$raca);
             $personagem->save();
         });
+    }
+
+    public function getPersonagemJson($id){
+        return $this->with(['raca','raca.arma','raca.arma.dado'])->where('id',$id)->first();
+
     }
 
 
