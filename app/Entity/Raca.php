@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Raca extends Model
 {
+    protected $table = 'racas';
     protected $fillable = ['tipo','vida','forca','agilidade','arma_id'];
 
 

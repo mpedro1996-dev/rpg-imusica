@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Personagem extends Model
 {
+    protected $table = "personagens";
     protected $fillable = ['nome','raca_id'];
 
     public function __construct(array $attributes = [], $raca = null)
