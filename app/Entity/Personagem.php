@@ -15,10 +15,12 @@ class Personagem extends Model
 {
     protected $fillable = ['nome','raca_id'];
 
-    public function __construct(array $attributes = [], Raca $raca)
+    public function __construct(array $attributes = [], $raca = null)
     {
         parent::__construct($attributes);
-        $this->raca_id = $raca->id;
+        if($raca instanceof Raca){
+            $this->raca_id = $raca->id;
+        }
 
     }
 

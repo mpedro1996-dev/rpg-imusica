@@ -11,7 +11,7 @@ namespace RPGImusica\Entity;
 
 class Orc extends Raca
 {
-    public function __construct(array $attributes = [], Arma $arma)
+    public function __construct(array $attributes = [], $arma = null)
     {
         parent::__construct($attributes, $arma);
         $this->vida = 20;

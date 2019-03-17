@@ -18,4 +18,9 @@ class DVinte extends Dado
         $this->valor = 20;
     }
 
+    public function pegarDado($nome = null)
+    {
+        return $this->where('nome','D20')->first();
+    }
+
 }

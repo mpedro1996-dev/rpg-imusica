@@ -15,7 +15,7 @@ class ArmaSeeder extends Seeder
         $dSeis = \RPGImusica\Entity\Dado::where('nome','D6')->first();
         $dOito = \RPGImusica\Entity\Dado::where('nome','D8')->first();
         $espada = new \RPGImusica\Entity\Espada([],$dSeis);
-        $clava = new \RPGImusica\Entity\Espada([],$dOito);
+        $clava = new \RPGImusica\Entity\Clava([],$dOito);
         $espada->save();
         $clava->save();
     }

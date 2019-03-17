@@ -3,7 +3,10 @@
 namespace RPGImusica\Http\Controllers;
 
 use Illuminate\Http\Request;
+use RPGImusica\Entity\Arma;
+use RPGImusica\Entity\Clava;
 use RPGImusica\Entity\Dado;
+use RPGImusica\Entity\DOito;
 use RPGImusica\Entity\Espada;
 use RPGImusica\Entity\Humano;
 use RPGImusica\Entity\Personagem;
@@ -12,6 +15,13 @@ use Symfony\Component\VarDumper\VarDumper;
 
 class PersonagemController extends Controller
 {
+    private $arma;
+    public function __construct()
+    {
+        $this->arma = new Clava([], new DOito());
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -30,10 +40,7 @@ class PersonagemController extends Controller
      */
     public function store(Request $request)
     {
-        $dado = Dado::where('nome','D6')->first();
-        $espada = new Espada([],$dado);
-        VarDumper::dump($espada);
-        exit;
+        dd($this->arma->pegarArma());
     }
 
     /**

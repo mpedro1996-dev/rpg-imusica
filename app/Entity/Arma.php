@@ -16,10 +16,13 @@ class Arma extends Model
     protected $table ='armas';
     protected $fillable = ['nome','bonus_ataque','bonus_defesa','dado_id'];
 
-    public function __construct(array $attributes = [],Dado $dado)
+    public function __construct(array $attributes = [],$dado = null)
     {
         parent::__construct($attributes);
-        $this->dado_id = $dado->id;
+
+        if($dado instanceof Dado) {
+            $this->dado_id = $dado->id;
+        }
     }
 
 }

@@ -11,7 +11,7 @@ namespace RPGImusica\Entity;
 
 class Espada extends Arma{
 
-    public function __construct(array $attributes = [], Dado $dado)
+    public function __construct(array $attributes = [], $dado = null)
     {
         parent::__construct($attributes, $dado);
         $this->nome = "Espada";
@@ -19,8 +19,10 @@ class Espada extends Arma{
         $this->bonus_defesa = 1;
     }
 
-
-
+    public function pegarArma()
+    {
+        return $this->where('nome','Clava')->first();
+    }
 
 
 }

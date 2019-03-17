@@ -18,4 +18,9 @@ class DOito extends Dado
         $this->valor = 8;
     }
 
+    public function pegarDado($nome = null)
+    {
+        return $this->where('nome','D8')->first();
+    }
+
 }

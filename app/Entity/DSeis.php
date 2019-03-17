@@ -18,4 +18,9 @@ class DSeis extends Dado
         $this->valor = 6;
     }
 
+    public function pegarDado($nome = null)
+    {
+        return $this->where('nome','D6')->first();
+    }
+
 }
