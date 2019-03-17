@@ -4,6 +4,17 @@ use Illuminate\Database\Seeder;
 
 class ArmaSeeder extends Seeder
 {
+    /** @var \RPGImusica\Entity\DSeis */
+    private $dSeis;
+    /** @var \RPGImusica\Entity\DOito */
+    private $dOito;
+    public function __construct()
+    {
+        $this->dSeis = new \RPGImusica\Entity\DSeis;
+        $this->dOito= new \RPGImusica\Entity\DOito();
+
+    }
+
     /**
      * Run the database seeds.
      *
@@ -12,8 +23,8 @@ class ArmaSeeder extends Seeder
     public function run()
     {
 
-        $dSeis = \RPGImusica\Entity\Dado::where('nome','D6')->first();
-        $dOito = \RPGImusica\Entity\Dado::where('nome','D8')->first();
+        $dSeis = $this->dSeis->pegarDado();
+        $dOito = $this->dOito->pegarDado();
         $espada = new \RPGImusica\Entity\Espada([],$dSeis);
         $clava = new \RPGImusica\Entity\Clava([],$dOito);
         $espada->save();

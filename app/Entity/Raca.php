@@ -16,10 +16,22 @@ class Raca extends Model
     protected $fillable = ['tipo','vida','forca','agilidade','arma_id'];
 
 
-    public function __construct(array $attributes = [], Arma $arma)
+    public function __construct(array $attributes = [], $arma = null)
     {
         parent::__construct($attributes);
-        $this->arma_id = $arma->id;
+        if($arma instanceof Arma){
+            $this->arma_id = $arma->id;
+        }
+    }
+
+    public function pegarRaca($tipo = null){
+
+        if($tipo!=null){
+            return $this->where('tipo',$tipo)->first();
+        }
+
+        return null;
+
     }
 
 

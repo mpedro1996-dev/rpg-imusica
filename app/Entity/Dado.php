@@ -10,7 +10,10 @@ class Dado extends Model
 
     public function pegarDado($nome = null){
 
-        return $this->where('nome',$nome)->first();
+        if($nome!=null){
+            return $this->where('nome',$nome)->first();
+        }
+        return null;
     }
 
 }

@@ -25,4 +25,11 @@ class Arma extends Model
         }
     }
 
+    public function pegarArma($nome = null){
+        if($nome != null){
+            $this->where('nome',$nome)->first();
+        }
+        return null;
+    }
+
 }

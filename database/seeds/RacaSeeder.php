@@ -12,5 +12,6 @@ class RacaSeeder extends Seeder
     public function run()
     {
 
+
     }
 }

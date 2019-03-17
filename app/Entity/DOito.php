@@ -20,7 +20,7 @@ class DOito extends Dado
 
     public function pegarDado($nome = null)
     {
-        return $this->where('nome','D8')->first();
+        return parent::pegarDado('D8');
     }
 
 }
