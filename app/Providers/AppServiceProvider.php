@@ -3,6 +3,8 @@
 namespace RPGImusica\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use RPGImusica\Entity\Personagem;
+use RPGImusica\Http\Services\Iniciativa\IniciativaCarregador;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        /*=========================================== INICIATIVA ==========================================*/
+        $this->app->bind('iniciativa.iniciativa_carregador',function (){
+           return new IniciativaCarregador(new Personagem());
+        });
+        /*=================================================================================================*/
+
+
+
     }
 
     /**

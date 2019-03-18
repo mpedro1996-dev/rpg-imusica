@@ -23,9 +23,7 @@ Route::group(['prefix'=>'personagem'],function (){
 });
 
 Route::group(['prefix'=>'iniciativa'],function (){
-    Route::get('/',function (){
-        return "iniciativa";
-    });
+    Route::post('/rolar','IniciativaController@pegarIniciativa');
 });
 
 Route::group(['prefix'=>'batalha'],function (){
