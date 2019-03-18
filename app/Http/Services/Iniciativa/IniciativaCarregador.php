@@ -9,6 +9,7 @@
 namespace RPGImusica\Http\Services\Iniciativa;
 
 
+use RPGImusica\Entity\DVinte;
 use RPGImusica\Entity\Personagem;
 use Symfony\Component\VarDumper\VarDumper;
 
@@ -16,12 +17,15 @@ class IniciativaCarregador
 {
     private $ids = [];
     private $personagens = [];
+    private $response = [];
+    private $dVinte;
     /** @var Personagem  */
     private $personagemRepository;
 
-    public function __construct(Personagem $personagem)
+    public function __construct(Personagem $personagem, DVinte $dVinte)
     {
         $this->personagemRepository = $personagem;
+        $this->dVinte = $dVinte;
     }
 
     public function setPersonagens(){
@@ -31,13 +35,26 @@ class IniciativaCarregador
 
             array_push($this->personagens,$personagem);
         }
+    }
 
-        VarDumper::dump($this->personagens);
-        exit;
+    public function sortearIniciativa(){
+        foreach ($this->personagens as $p){
+            $valorRolado = $this->dVinte->rolarDado();
+            $obj = [
+                "id"=>$p->id,
+                "valor-rolado"=>$valorRolado,
+                "iniciativa"=>$valorRolado+$p->raca->agilidade
+            ];
+
+            array_push($this->response,$obj);
+        }
+
     }
 
     public function rolarIniciativa(){
         $this->setPersonagens();
+        $this->sortearIniciativa();
+        return $this->response;
     }
 
 

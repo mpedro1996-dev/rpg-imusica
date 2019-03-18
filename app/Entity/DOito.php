@@ -23,4 +23,9 @@ class DOito extends Dado
         return parent::pegarDado('D8');
     }
 
+    public function rolarDado()
+    {
+        return parent::rolarDado();
+    }
+
 }

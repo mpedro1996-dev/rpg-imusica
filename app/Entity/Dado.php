@@ -16,4 +16,8 @@ class Dado extends Model
         return null;
     }
 
+    public function rolarDado(){
+        return rand(1,$this->valor);
+    }
+
 }
