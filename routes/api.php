@@ -27,7 +27,5 @@ Route::group(['prefix'=>'iniciativa'],function (){
 });
 
 Route::group(['prefix'=>'batalha'],function (){
-    Route::get('/',function (){
-        return "batalha";
-    });
+    Route::post('/batalhar','BatalhaController@batalhar');
 });

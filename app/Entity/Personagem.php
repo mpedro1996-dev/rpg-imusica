@@ -43,8 +43,19 @@ class Personagem extends Model
 
     public function getPersonagemJson($id){
         return $this->with(['raca','raca.arma','raca.arma.dado'])->where('id',$id)->first();
-
     }
+
+    public function calcularFator(DVinte $dVinte){
+        return $dVinte->rolarDado()+$this->raca->agilidade;
+    }
+    public function calcularDanoCausado(){
+        $resultadoDado = $this->raca->arma->dado->rolarDado();
+        return [
+            "resultado-dado"=>$resultadoDado,
+            "dano"=>$resultadoDado+$this->raca->forca
+        ];
+    }
+
 
 
 }
