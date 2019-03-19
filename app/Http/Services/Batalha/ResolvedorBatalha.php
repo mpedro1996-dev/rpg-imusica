@@ -9,6 +9,7 @@
 namespace RPGImusica\Http\Services\Batalha;
 
 
+use RPGImusica\Entity\Dado;
 use RPGImusica\Entity\DVinte;
 use RPGImusica\Entity\Personagem;
 use Symfony\Component\VarDumper\VarDumper;
@@ -22,12 +23,16 @@ class ResolvedorBatalha implements InterfaceBatalha
     /** @var Personagem */
     private $personagemDefensor;
 
+    private $dado;
+
+
     private $resultadoAtaque;
     private $resultadoDefesa;
 
-    public function __construct(Personagem $personagem)
+    public function __construct(Personagem $personagem, Dado $dado)
     {
         $this->personagemRepository = $personagem;
+        $this->dado = $dado;
     }
 
     public function setPersonagens(array $personagens){
@@ -41,19 +46,28 @@ class ResolvedorBatalha implements InterfaceBatalha
         }
 
     }
-    public function atacar(DVinte $dado)
+    public function atacar()
     {
-        // TODO: Implement atacar() method.
+        $this->resultadoAtaque = $this->personagemAtacante->calcularFatorAtaque($this->dado);
     }
-    public function defender(DVinte $dado)
+    public function defender()
     {
-        // TODO: Implement defender() method.
+        $this->resultadoDefesa = $this->personagemDefensor->calcularFatorDefesa($this->dado);
     }
 
     public function fazerCalculoDano(){
-        $resultado = $this->personagemAtacante->calcularDanoCausado();
+        $this->atacar(new DVinte());
+        $this->defender(new DVinte());
+        if($this->resultadoAtaque >  $this->resultadoDefesa) {
+            $resultado = $this->personagemAtacante->calcularDanoCausado();
 
-        return $resultado;
+            return $resultado;
+        }else{
+            return [
+                "resultado-dado"=>0,
+                "dano"=>0
+            ];
+        }
     }
 
 

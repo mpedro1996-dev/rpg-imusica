@@ -12,7 +12,7 @@ use RPGImusica\Entity\DVinte;
 
 interface InterfaceBatalha
 {
-    public function atacar(DVinte $dado);
-    public function defender(DVinte $dado);
+    public function atacar();
+    public function defender();
 
 }

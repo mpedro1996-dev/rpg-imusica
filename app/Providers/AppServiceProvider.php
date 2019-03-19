@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
         /*=================================================================================================*/
         /*============================================ BATALHA ============================================*/
         $this->app->bind('batalha.batalha_resolvedor',function (){
-            return new ResolvedorBatalha(new Personagem());
+            return new ResolvedorBatalha(new Personagem(), new DVinte());
         });
         /*=================================================================================================*/
 

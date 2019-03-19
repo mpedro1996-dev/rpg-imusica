@@ -45,9 +45,22 @@ class Personagem extends Model
         return $this->with(['raca','raca.arma','raca.arma.dado'])->where('id',$id)->first();
     }
 
-    public function calcularFator(DVinte $dVinte){
-        return $dVinte->rolarDado()+$this->raca->agilidade;
+    public function calcularFatorAtaque(Dado $dVinte){
+        $resultadoDado = $dVinte->rolarDado();
+        return [
+            "resultado-dado"=>$resultadoDado,
+            "fator"=>$resultadoDado+$this->raca->arma->bonus_ataque+$this->raca->agilidade
+        ];
     }
+
+    public function calcularFatorDefesa(Dado $dVinte){
+        $resultadoDado = $dVinte->rolarDado();
+        return [
+            "resultado-dado"=>$resultadoDado,
+            "fator"=>$resultadoDado+$this->raca->arma->bonus_defesa+$this->raca->agilidade
+        ];
+    }
+
     public function calcularDanoCausado(){
         $resultadoDado = $this->raca->arma->dado->rolarDado();
         return [
