@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('criar_personagem');
-});
+Route::get('/', 'ViewController@criarPersonagens');
+Route::get('/batalha/{idHumano}/{idOrc}', 'ViewController@batalha');

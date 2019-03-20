@@ -35,10 +35,11 @@ class Personagem extends Model
 
 
     public function criarPersonagem(array $obj = [], Raca $raca){
-        DB::transaction(function () use ($obj,$raca){
-            $personagem = new Personagem($obj,$raca);
+        $personagem = new Personagem($obj,$raca);
+        DB::transaction(function () use ($personagem){
             $personagem->save();
         });
+        return $personagem;
     }
 
     public function getPersonagemJson($id){

@@ -58,13 +58,13 @@ class PersonagemController extends Controller
             /** @var Humano $humano */
             $humano = $this->humano->pegarRaca();
 
-            $this->personagem->criarPersonagem($personagemHumano,$humano);
-            $this->personagem->criarPersonagem($personagemOrc,$orc);
+            $modelHuman = $this->personagem->criarPersonagem($personagemHumano,$humano);
+            $modelOrc = $this->personagem->criarPersonagem($personagemOrc,$orc);
 
 
 
 
-            return response()->json(['message'=>"Personagens cadastrado com sucesso."],200);
+            return response()->json(["humano"=>$modelHuman->id,"orc"=>$modelOrc->id],200);
         }catch (\Exception $e){
             return response()->json(['message'=>"Erro ao cadastrar: ".$e->getMessage()],500);
 
