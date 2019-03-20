@@ -15,15 +15,16 @@ class IniciativaController extends Controller
 
         $service->setIds($ids);
 
-        $service->rolarIniciativa();
+        return $service->rolarIniciativa();
 
     }
 
     public function pegarIniciativa(Request $request){
         $ids = $request->get('ids');
 
-        $this->rolarIniciativa($ids);
+        $response = $this->rolarIniciativa($ids);
 
+        return response()->json($response,200);
 
     }
 }

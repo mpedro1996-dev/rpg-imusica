@@ -5,8 +5,12 @@ $(document).ready(function () {
 
 script = {
     campos:{humano: {},orc:{}},
-    humano:{},
-    orc:{},
+    humano:null,
+    orc:null,
+    logBatalha:null,
+    botaoIniciativa:null,
+    botaoAtaque:null,
+    rodada:0,
     iniciarCampos:function(){
         this.campos.humano.id =$("#id-humano");
         this.campos.humano.vida = $("#vida-humano");
@@ -22,8 +26,131 @@ script = {
         this.campos.orc.agilidade = $("#agilidade-orc");
         this.campos.orc.barraProgresso = $("#barra-progresso-orc");
 
+        this.logBatalha = $("#log-batalha");
+        this.botaoIniciativa = $("#btn-iniciativa");
+        this.botaoAtaque = $("#btn-ataque");
+
+        this.logBatalha.empty();
+
+
+        let mensagem = 'Aguarde...';
+
+        this.printLogResolucao(mensagem);
+
+
         this.ajaxCarregarPersonagens(this.campos.humano.id.val());
         this.ajaxCarregarPersonagens(this.campos.orc.id.val());
+
+        if(this.orc!==null && this.humano!==null){
+            mensagem = "Batalha Iniciada";
+            this.printLogResolucao(mensagem);
+            this.iniciarTurno();
+
+        }
+    },
+
+    iniciarBotoes:function(){
+        this.botaoIniciativa.click(()=>{
+            this.ajaxIniciativa();
+        })
+        this.botaoAtaque.click(()=>{
+            this.ajaxAtaque();
+        })
+
+    },
+
+    iniciarTurno:function(){
+        this.rodada++;
+        this.printLogResolucao("Rodada: "+this.rodada);
+        this.botaoIniciativa.show();
+        this.botaoAtaque.hide();
+
+    },
+
+    resolverIniciativa:function(){
+        this.printLogHumano("Dado: " +this.humano.dadoIniciativa);
+        this.printLogHumano("Iniciativa: " +this.humano.iniciativa);
+        this.printLogOrc("Dado: " +this.orc.dadoIniciativa);
+        this.printLogOrc("Iniciativa: " +this.orc.iniciativa);
+
+        if(this.humano.iniciativa !== this.orc.iniciativa){
+            this.botaoIniciativa.hide();
+            this.botaoAtaque.show();
+            if(this.humano.iniciativa > this.orc.iniciativa){
+                this.printLogResolucao("Humano ataca Orc");
+                this.humano.iniciativa =1;
+                this.orc.iniciativa =0;
+            }else{
+                this.printLogResolucao("Orc ataca Ataca");
+                this.humano.iniciativa = 0;
+                this.orc.iniciativa = 1;
+            }
+        }else{
+            this.printLogResolucao("Empate na iniciativa, role novamente.");
+        }
+
+    },
+
+    resolverAtaque:function(response){
+        if(this.humano.iniciativa===1){
+            this.printLogHumano("D20: "+response['resultado-ataque']['resultado-dado']);
+            this.printLogHumano("Fator: "+response['resultado-ataque']['fator']);
+        }else{
+            this.printLogOrc("D20: "+response['resultado-ataque']['resultado-dado']);
+            this.printLogOrc("Fator: "+response['resultado-ataque']['fator']);
+        }
+        if(this.humano.iniciativa===0){
+            this.printLogHumano("D20: "+response['resultado-defesa']['resultado-dado']);
+            this.printLogHumano("Fator: "+response['resultado-defesa']['fator']);
+        }else{
+            this.printLogOrc("D20: "+response['resultado-defesa']['resultado-dado']);
+            this.printLogOrc("Fator: "+response['resultado-defesa']['fator']);
+        }
+
+        this.printLogResolucao("Resolvendo batalha...")
+
+        if(response.dano.dano===0){
+            this.printLogResolucao("O atacante errou. Nenhum dano causado");
+        }else{
+            this.printLogResolucao("O atacante feriu o defensor.");
+            if(this.humano.iniciativa===1){
+                this.printLogHumano("Dado: "+response['dano']['resultado-dado']);
+                this.printLogHumano("Dano: "+response['dano']['dano']);
+            }else{
+                this.printLogOrc("Dado: "+response['dano']['resultado-dado']);
+                this.printLogOrc("Dano: "+response['dano']['dano']);
+
+            }
+
+        }
+
+    },
+
+    renderizarBatalha:function(dano){
+
+    },
+    calcularPorcentagem:function(tipo,vida,dano){
+
+    },
+
+
+    printLogHumano:function(mensagem){
+        let print = '<p class="log-humano">'+mensagem+'</p>';
+        this.logBatalha.append(print);
+
+    },
+
+    printLogOrc:function(mensagem){
+        let print = '<p class="log-orc">'+mensagem+'</p>';
+        this.logBatalha.append(print);
+
+
+    },
+    printLogResolucao:function(mensagem){
+        let print = '<p class="log-resolucao">'+mensagem+'</p>';
+        this.logBatalha.append(print);
+
+
     },
 
     renderizarHumano:function(){
@@ -62,9 +189,61 @@ script = {
             }
         });
     },
+    ajaxIniciativa:function(){
+        $.ajax({
+            url: BASE_URL+"api/iniciativa/rolar",
+            type:'post',
+            async:false,
+            data:{ids:[this.humano.id,this.orc.id]},
+            success: (response)=>{
+                response.forEach((iniciativa)=>{
+                    if(iniciativa.id === this.humano.id){
+                        this.humano.iniciativa = iniciativa.iniciativa;
+                        this.humano.dadoIniciativa = iniciativa['valor-rolado'];
+                    }else{
+                        this.orc.iniciativa = iniciativa.iniciativa;
+                        this.orc.dadoIniciativa = iniciativa['valor-rolado'];
+                    }
+                });
+
+                this.resolverIniciativa();
+
+
+            }
+        });
+    },
+
+    ajaxAtaque:function(){
+        $.ajax({
+            url: BASE_URL+"api/batalha/batalhar",
+            type:'post',
+            async:false,
+            data:
+                {
+                    personagens:[
+                        {
+                            id:this.humano.id,
+                            iniciativa:this.humano.iniciativa,
+                        },
+                        {
+                            id:this.orc.id,
+                            iniciativa:this.orc.iniciativa,
+                        }
+
+
+                    ]
+                },
+            success: (response)=>{
+                this.resolverAtaque(response);
+
+
+            }
+        });
+    },
 
     iniciar:function () {
         this.iniciarCampos();
+        this.iniciarBotoes();
 
     }
 };

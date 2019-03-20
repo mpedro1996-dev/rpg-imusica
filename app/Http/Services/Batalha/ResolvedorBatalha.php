@@ -56,18 +56,25 @@ class ResolvedorBatalha implements InterfaceBatalha
     }
 
     public function fazerCalculoDano(){
-        $this->atacar(new DVinte());
-        $this->defender(new DVinte());
-        if($this->resultadoAtaque >  $this->resultadoDefesa) {
-            $resultado = $this->personagemAtacante->calcularDanoCausado();
+        $this->atacar();
+        $this->defender();
 
-            return $resultado;
+        $response = [
+            "resultado-ataque"=>$this->resultadoAtaque,
+            "resultado-defesa"=>$this->resultadoDefesa,
+        ];
+
+        if($this->resultadoAtaque['fator'] >  $this->resultadoDefesa['fator']) {
+            $response['dano'] = $this->personagemAtacante->calcularDanoCausado();
+
         }else{
-            return [
+            $response['dano'] = [
                 "resultado-dado"=>0,
                 "dano"=>0
             ];
+
         }
+        return $response;
     }
 
 
