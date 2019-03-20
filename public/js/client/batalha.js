@@ -168,6 +168,7 @@ script = {
                 this.printLogResolucao("Humano Venceu.");
 
             }
+
         }else{
             this.iniciarTurno();
         }
@@ -191,20 +192,22 @@ script = {
 
 
     printLogHumano:function(mensagem){
-        let print = '<p class="log-humano">'+mensagem+'</p>';
+        let print = '<p class="log log-humano">'+mensagem+'</p>';
         this.logBatalha.append(print);
 
     },
 
     printLogOrc:function(mensagem){
-        let print = '<p class="log-orc">'+mensagem+'</p>';
+        let print = '<p class="log log-orc">'+mensagem+'</p>';
         this.logBatalha.append(print);
+
 
 
     },
     printLogResolucao:function(mensagem){
-        let print = '<p class="log-resolucao">'+mensagem+'</p>';
+        let print = '<p class="log log-resolucao">'+mensagem+'</p>';
         this.logBatalha.append(print);
+
 
 
     },
