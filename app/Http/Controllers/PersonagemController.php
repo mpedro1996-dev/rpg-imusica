@@ -13,6 +13,7 @@ use RPGImusica\Entity\Humano;
 use RPGImusica\Entity\Orc;
 use RPGImusica\Entity\Personagem;
 use RPGImusica\Entity\Raca;
+use RPGImusica\Http\Requests\PersonagemRequest;
 use Symfony\Component\VarDumper\VarDumper;
 
 class PersonagemController extends Controller
@@ -46,7 +47,7 @@ class PersonagemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PersonagemRequest $request)
     {
         try{
             $personagemHumano = $request->get('humano');
