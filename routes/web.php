@@ -11,5 +11,5 @@
 |
 */
 
-Route::get('/', 'ViewController@criarPersonagens');
-Route::get('/batalha/{idHumano}/{idOrc}', 'ViewController@batalha');
+Route::get('/', 'ViewController@criarPersonagens')->name("criar_personagem");
+Route::get('/batalha/{idHumano}/{idOrc}', 'ViewController@batalha')->name("iniciar_batalha");

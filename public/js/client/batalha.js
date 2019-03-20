@@ -10,6 +10,8 @@ script = {
     logBatalha:null,
     botaoIniciativa:null,
     botaoAtaque:null,
+    botaoJogarNovamente:null,
+    botaoNovaBatalha:null,
     rodada:0,
     iniciarCampos:function(){
         this.campos.humano.id =$("#id-humano");
@@ -29,6 +31,8 @@ script = {
         this.logBatalha = $("#log-batalha");
         this.botaoIniciativa = $("#btn-iniciativa");
         this.botaoAtaque = $("#btn-ataque");
+        this.botaoJogarNovamente = $("#btn-jogar-novamente");
+        this.botaoNovaBatalha = $("#btn-nova-partida");
 
         this.logBatalha.empty();
 
@@ -111,6 +115,7 @@ script = {
 
         if(response.dano.dano===0){
             this.printLogResolucao("O atacante errou. Nenhum dano causado");
+            this.decidirResultado();
         }else{
             this.printLogResolucao("O atacante feriu o defensor.");
             if(this.humano.iniciativa===1){
@@ -121,15 +126,66 @@ script = {
                 this.printLogOrc("Dano: "+response['dano']['dano']);
 
             }
+            this.renderizarBatalha(response['dano']['dano']);
 
         }
 
     },
 
     renderizarBatalha:function(dano){
+        if(this.humano.iniciativa===0){
+            this.humano.raca.vida = this.humano.raca.vida - dano;
+            if(this.humano.raca.vida<0){
+                this.humano.raca.vida = 0;
+            }
+            let porcentagem = this.calcularPorcentagem();
+            this.renderizarHumano();
+            this.campos.humano.barraProgresso.css({width:porcentagem});
+            this.campos.humano.barraProgresso.text(porcentagem);
+        }else{
+            this.orc.raca.vida = this.orc.raca.vida - dano;
+            if(this.orc.raca.vida<0){
+                this.orc.raca.vida = 0;
+            }
+            let porcentagem = this.calcularPorcentagem();
+            this.renderizarOrc();
+            this.campos.orc.barraProgresso.css({width:porcentagem});
+            this.campos.orc.barraProgresso.text(porcentagem);
+        }
+        this.decidirResultado();
+
 
     },
-    calcularPorcentagem:function(tipo,vida,dano){
+    decidirResultado:function(){
+        if(this.humano.raca.vida===0||this.orc.raca.vida===0){
+            this.printLogResolucao("Batalha Encerrada.");
+            this.botaoNovaBatalha.show();
+            this.botaoJogarNovamente.show();
+            this.botaoAtaque.hide();
+            if(this.humano.raca.vida===0){
+                this.printLogResolucao("Orc Venceu.");
+            }else{
+                this.printLogResolucao("Humano Venceu.");
+
+            }
+        }else{
+            this.iniciarTurno();
+        }
+    },
+    calcularPorcentagem:function(){
+        let vidaTotal = 1;
+        let calculo = "";
+        if(this.humano.iniciativa===0){
+            vidaTotal = 12;
+            calculo = (this.humano.raca.vida/vidaTotal)*100+"%";
+
+        }else{
+            vidaTotal = 20;
+            calculo = (this.orc.raca.vida/vidaTotal)*100+"%";
+        }
+
+        return calculo
+
 
     },
 
