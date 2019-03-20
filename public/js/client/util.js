@@ -1,1 +1,1 @@
-const BASE_URL = window.location.href;
+const BASE_URL = window.location.origin+"/";

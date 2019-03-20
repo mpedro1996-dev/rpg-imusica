@@ -42,6 +42,6 @@
             </div>
         </div>
     </div>
-    <script src="js/client/criarPersonagem.js"></script>
+    <script src="{{asset('js/client/criarPersonagem.js')}}"></script>
 
 @endsection

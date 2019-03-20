@@ -12,6 +12,6 @@ class ViewController extends Controller
     }
 
     public function batalha($idHumano,$idOrc){
-        return view('batalha');
+        return view('batalha')->with(['idHumano'=>$idHumano,'idOrc'=>$idOrc]);
     }
 }
