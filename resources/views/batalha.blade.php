@@ -65,7 +65,7 @@
                         <button class="btn btn-primary" id="btn-iniciativa" style="display:none;" >Iniciativa</button>
                         <a href="{{route("iniciar_batalha",["idHumano"=>$idHumano,"idOrc"=>$idOrc])}}" class="btn btn-primary" id="btn-jogar-novamente" style="display:none;" >Jogar Novamente</a>
                         <button class="btn btn-danger" id="btn-ataque" style="display:none;">Ataque</button>
-                        <a href="{{route("criar_personagem")}}" class="btn btn-success" id="btn-nova-partida" style="display:none; margin-top: 10px;">Nova Partida</a>
+                        <a href="{{route("criar_personagem")}}" class="btn btn-success" id="btn-nova-partida" style="display:none;">Nova Partida</a>
 
                     </div>
                 </div>
