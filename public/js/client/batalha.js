@@ -75,7 +75,7 @@ script = {
 
     iniciarTurno:function(){
         this.rodada++;
-        this.logBatalha.append("<hr>");
+        this.logBatalha.append("<hr class='log log-resolucao'>");
         this.printLogResolucao("Rodada: "+this.rodada);
         this.botaoIniciativa.show();
         this.botaoAtaque.hide();
