@@ -50,6 +50,14 @@
                         <div class="form-group row">
                             <label for="orc-agilidade" class="col-md-4">Agilidade:</label><div id="agilidade-humano" class="col-md caracteristica"></div>
                         </div>
+                        <hr>
+                        <h2 id="humano-arma"></h2>
+                        <div class="form-group row">
+                            <label for="orc-arma-ataque" class="col-md-4">Ataque:</label><div class="col-md caracteristica" id="arma-ataque-humano"></div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="orc-arma-defesa" class="col-md-4">Defesa:</label><div class="col-md caracteristica" id="arma-defesa-humano"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -94,6 +102,14 @@
                         </div>
                         <div class="form-group row">
                             <label for="orc-agilidade" class="col-md-4">Agilidade:</label><div class="col-md caracteristica" id="agilidade-orc"></div>
+                        </div>
+                        <hr>
+                        <h2 id="orc-arma"></h2>
+                        <div class="form-group row">
+                            <label for="orc-arma-ataque" class="col-md-4">Ataque:</label><div class="col-md caracteristica" id="arma-ataque-orc"></div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="orc-arma-defesa" class="col-md-4">Defesa:</label><div class="col-md caracteristica" id="arma-defesa-orc"></div>
                         </div>
                     </div>
                 </div>

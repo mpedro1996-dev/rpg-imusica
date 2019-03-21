@@ -19,6 +19,9 @@ script = {
         this.campos.humano.nome = $("#nome-humano");
         this.campos.humano.forca = $("#forca-humano");
         this.campos.humano.agilidade = $("#agilidade-humano");
+        this.campos.humano.nomeArma = $("#humano-arma");
+        this.campos.humano.armaAtaque = $("#arma-ataque-humano");
+        this.campos.humano.armaDefesa = $("#arma-defesa-humano");
         this.campos.humano.barraProgresso = $("#barra-progresso-humano");
 
         this.campos.orc.id=$("#id-orc");
@@ -26,6 +29,9 @@ script = {
         this.campos.orc.nome = $("#nome-orc");
         this.campos.orc.forca = $("#forca-orc");
         this.campos.orc.agilidade = $("#agilidade-orc");
+        this.campos.orc.nomeArma = $("#orc-arma");
+        this.campos.orc.armaAtaque = $("#arma-ataque-orc");
+        this.campos.orc.armaDefesa = $("#arma-defesa-orc");
         this.campos.orc.barraProgresso = $("#barra-progresso-orc");
 
         this.logBatalha = $("#log-batalha");
@@ -217,6 +223,9 @@ script = {
         this.campos.humano.nome.text(this.humano.nome);
         this.campos.humano.forca.text(this.humano.raca.forca);
         this.campos.humano.agilidade.text(this.humano.raca.agilidade);
+        this.campos.humano.nomeArma.text(this.humano.raca.arma.nome.toUpperCase());
+        this.campos.humano.armaAtaque.text(this.humano.raca.arma['bonus_ataque']);
+        this.campos.humano.armaDefesa.text(this.humano.raca.arma['bonus_defesa']);
 
     },
     renderizarOrc:function(){
@@ -224,6 +233,9 @@ script = {
         this.campos.orc.nome.text(this.orc.nome);
         this.campos.orc.forca.text(this.orc.raca.forca);
         this.campos.orc.agilidade.text(this.orc.raca.agilidade);
+        this.campos.orc.nomeArma.text(this.orc.raca.arma.nome.toUpperCase());
+        this.campos.orc.armaAtaque.text(this.orc.raca.arma['bonus_ataque']);
+        this.campos.orc.armaDefesa.text(this.orc.raca.arma['bonus_defesa']);
     },
 
     ajaxCarregarPersonagens:function(id){
