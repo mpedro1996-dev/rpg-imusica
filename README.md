@@ -12,7 +12,7 @@ Projeto com objetivo de criar um RPG de mesa, onde os usuários escolheram entre
 Clone o projeto e aponte para o branch master
 
 ```
-git clone 
+git clone https://github.com/MPedro1996/rpg-imusica.git
 git checkout master
 ```
 
