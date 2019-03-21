@@ -7,7 +7,7 @@ Projeto com objetivo de criar um RPG de mesa, onde os usuários escolheram entre
 * PostgreSQL
 * SO: Linux(Recomendado) ou Windows
 
-### Instalando Projeto
+## Instalando Projeto
 
 Clone o projeto e aponte para o branch master
 
@@ -43,7 +43,7 @@ Se não estiver rodando o projeto com homestead do laravel, execute para rodar a
 php artisan serve
 ```
 
-### Arquivos
+## Arquivos
 
 * routes/api.php => Arquivo de rotas para as APIs construídas
 * routes/web.php => Arquivo de rotas para as Views construídas
@@ -51,4 +51,21 @@ php artisan serve
 * app/Http/Controllers/ => Arquivos Controllers
 * app/Http/Requests/ => Validação de requisições
 * app/Http/Services/ => Serviços construídos para aplicações de regras de negócio
+
+## Opiniões do Desenvolvedor
+
+A ideia era fazer um servidor que devolva o máximo de informações possíveis de acordo com a interação do turno.
+Então foi divido em dois: Iniciativa e Batalha. Como o cálculo de dano é resultado consequência da batalha, eu coloquei os dois juntos.
+Então as APIs criadas:
+
+* Criação dos Personagens (/api/personagem/criar)
+* Pegar os Personagens (/api/iniciativa/show/{id})
+* Rolar as Iniciativas (/api/iniiciativa/rolar)
+* Batalhar (/api/batalha/batalhar)
+
+Ao rolar dado da iniciativa, já rolará para os dois personagens e ao rolar o ataque, rolará o ataque do atacante e defesa do defensor.
+
+
+
+
 
