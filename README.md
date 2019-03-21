@@ -60,10 +60,12 @@ Então as APIs criadas:
 
 * Criação dos Personagens (/api/personagem/criar)
 * Pegar os Personagens (/api/iniciativa/show/{id})
-* Rolar as Iniciativas (/api/iniiciativa/rolar)
+* Rolar as Iniciativas (/api/iniciativa/rolar)
 * Batalhar (/api/batalha/batalhar)
 
-Ao rolar dado da iniciativa, já rolará para os dois personagens e ao rolar o ataque, rolará o ataque do atacante e defesa do defensor.
+Ao rolar dado da iniciativa, já rolará para os dois personagens e ao rolar o ataque, rolará o ataque do atacante e defesa do defensor.<br>
+<br>
+Os errors que aparecem para consultar o log no cliente, são erros tratados pela FormRequest(app/Http/Requests/) para que as APIs sejam consumidas corretamente e espera-se a requisição correta para executar a requisição.
 
 
 
