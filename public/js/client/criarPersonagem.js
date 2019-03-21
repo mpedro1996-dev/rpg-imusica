@@ -57,6 +57,11 @@ script = {
 
                 })
 
+            },
+            error:(response)=>{
+                bootbox.alert("Erro ao cadastrar personagem. Consulte o log",function () {
+                    console.log(response.responseJSON)
+                });
             }
         });
     },

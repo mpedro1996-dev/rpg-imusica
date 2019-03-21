@@ -245,6 +245,11 @@ script = {
                 }
 
 
+            },
+            error:(response)=>{
+                bootbox.alert("Erro ao cadastrar personagem. Consulte o log",function () {
+                    console.log(response.responseJSON)
+                });
             }
         });
     },
@@ -268,6 +273,11 @@ script = {
                 this.resolverIniciativa();
 
 
+            },
+            error:(response)=>{
+                bootbox.alert("Erro ao cadastrar personagem. Consulte o log",function () {
+                    console.log(response.responseJSON)
+                });
             }
         });
     },
@@ -296,6 +306,11 @@ script = {
                 this.resolverAtaque(response);
 
 
+            },
+            error:(response)=>{
+                bootbox.alert("Erro ao cadastrar personagem. Consulte o log",function () {
+                    console.log(response.responseJSON)
+                });
             }
         });
     },
