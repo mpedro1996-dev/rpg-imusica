@@ -156,7 +156,6 @@ script = {
             let porcentagem = this.calcularPorcentagem();
             this.renderizarHumano();
             this.campos.humano.barraProgresso.css({width:porcentagem});
-            this.campos.humano.barraProgresso.text(porcentagem);
         }else{
             this.orc.raca.vida = this.orc.raca.vida - dano;
             if(this.orc.raca.vida<0){
@@ -165,7 +164,6 @@ script = {
             let porcentagem = this.calcularPorcentagem();
             this.renderizarOrc();
             this.campos.orc.barraProgresso.css({width:porcentagem});
-            this.campos.orc.barraProgresso.text(porcentagem);
         }
         this.decidirResultado();
 

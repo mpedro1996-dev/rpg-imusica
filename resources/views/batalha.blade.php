@@ -34,7 +34,7 @@
                         <input type="hidden" id="id-humano" value="{{$idHumano}}">
                         <div class="form-group">
                             <div class="progress">
-                                <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" id="barra-progresso-humano" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                                <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" id="barra-progresso-humano" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -88,7 +88,7 @@
                         <input type="hidden" id="id-orc" value="{{$idOrc}}">
                         <div class="form-group">
                             <div class="progress">
-                                <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" id="barra-progresso-orc" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                                <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" id="barra-progresso-orc" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                         <div class="form-group row">
