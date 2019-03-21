@@ -5,6 +5,7 @@ Projeto com objetivo de criar um RPG de mesa, onde os usuários escolheram entre
 ## Requisitos
 * PHP >= 7.1.3 ^
 * PostgreSQL
+* SO: Linux(Recomendado) ou Windows
 
 ### Instalando Projeto
 
