@@ -61,9 +61,11 @@ script = {
 
     iniciarBotoes:function(){
         this.botaoIniciativa.click(()=>{
+            this.botaoIniciativa.prop("disabled",true);
             this.ajaxIniciativa();
         })
         this.botaoAtaque.click(()=>{
+            this.botaoAtaque.prop("disabled",true);
             this.ajaxAtaque();
         })
 
@@ -98,6 +100,9 @@ script = {
         }else{
             this.printLogResolucao("Empate na iniciativa, role novamente.");
         }
+
+        this.botaoIniciativa.prop("disabled",false);
+
 
     },
 
@@ -135,6 +140,8 @@ script = {
             this.renderizarBatalha(response['dano']['dano']);
 
         }
+        this.botaoAtaque.prop("disabled",false);
+
 
     },
 
@@ -272,6 +279,7 @@ script = {
             async:false,
             data:{ids:[this.humano.id,this.orc.id]},
             success: (response)=>{
+
                 response.forEach((iniciativa)=>{
                     if(iniciativa.id === this.humano.id){
                         this.humano.iniciativa = iniciativa.iniciativa;
@@ -318,10 +326,12 @@ script = {
                 this.resolverAtaque(response);
 
 
+
             },
             error:(response)=>{
                 bootbox.alert("Erro ao cadastrar personagem. Consulte o log",function () {
                     console.log(response.responseJSON)
+
                 });
             }
         });
