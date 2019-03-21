@@ -2,6 +2,7 @@
 
 namespace RPGImusica\Providers;
 
+use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\ServiceProvider;
 use RPGImusica\Entity\DVinte;
 use RPGImusica\Entity\Personagem;
@@ -28,6 +29,10 @@ class AppServiceProvider extends ServiceProvider
         });
         /*=================================================================================================*/
 
+        if(env('REDIRECT_HTTPS')) {
+            $this->app['request']->server->set('HTTPS', true);
+        }
+
 
 
 
@@ -39,8 +44,10 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(UrlGenerator $url)
     {
-        //
+        if(env('REDIRECT_HTTPS')) {
+            $url->formatScheme('https');
+        }
     }
 }
