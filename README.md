@@ -55,7 +55,7 @@ php artisan serve
 ## Opiniões do Desenvolvedor
 
 A ideia era fazer um servidor que devolva o máximo de informações possíveis de acordo com a interação do turno.
-Então foi divido em dois: Iniciativa e Batalha. Como o cálculo de dano é resultado consequência da batalha, foram colocado os dois juntos.
+Então foi divido em dois: Iniciativa e Batalha. Como o cálculo de dano é resultado consequência da batalha, foram desenvolvidos os dois juntos.
 Então as APIs criadas:
 
 * Criação dos Personagens (/api/personagem/criar)
