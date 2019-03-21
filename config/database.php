@@ -2,6 +2,7 @@
 
 $url = parse_url(getenv("DATABASE_URL"));
 $host = $url["host"]??null;
+$port = $url["port"]??null;
 $username = $url["user"]??null;
 $password = $url["pass"]??null;
 $database = substr($url["path"],1)??null;
@@ -82,7 +83,7 @@ return [
         'pgsql_production' => [
             'driver' => 'pgsql',
             'host' =>$host,
-            'port' => env('DB_PORT', '5432'),
+            'port' => $port,
             'database' =>$database,
             'username' => $username,
             'password' => $password,
