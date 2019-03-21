@@ -1,11 +1,11 @@
 # RPG - iMusica
 
-Projeto com objetivo de criar um RPG de mesa, onde os usuários escolheram entre duas raças
+Projeto com objetivo de criar um RPG de mesa, onde os usuários escolhem entre duas raças para fazer um duelo medieval.
 
 ## Requisitos
 * PHP >= 7.1.3
 * PostgreSQL
-* SO: Linux(Recomendado) ou Windows
+* SO: Linux (Recomendado) ou Windows
 
 ## Instalando Projeto
 
@@ -65,7 +65,7 @@ Então as APIs criadas:
 
 Ao rolar dado da iniciativa, já rolará para os dois personagens e ao rolar o ataque, rolará o ataque do atacante e defesa do defensor.<br>
 <br>
-Os errors que aparecem para consultar o log no cliente, são erros tratados pela FormRequest(app/Http/Requests/) para que as APIs sejam consumidas corretamente e espera-se a requisição correta para executar a requisição.
+Os errors que aparecem para consultar o log no cliente, são erros tratados pela FormRequest (app/Http/Requests/) para que as APIs sejam consumidas corretamente e espera-se a requisição correta para executar a requisição.
 
 
 
