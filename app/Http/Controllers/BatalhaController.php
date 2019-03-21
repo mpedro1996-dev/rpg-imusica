@@ -3,6 +3,7 @@
 namespace RPGImusica\Http\Controllers;
 
 use Illuminate\Http\Request;
+use RPGImusica\Http\Requests\MinimoDoisRequest;
 use RPGImusica\Http\Services\Batalha\ResolvedorBatalha;
 use Symfony\Component\VarDumper\VarDumper;
 
@@ -17,7 +18,7 @@ class BatalhaController extends Controller
         return $service->fazerCalculoDano();
 
     }
-    public function batalhar(Request $request){
+    public function batalhar(MinimoDoisRequest $request){
         $personagens = $request->get("personagens");
 
         $dano = $this->pegarResultadoBatalha($personagens);

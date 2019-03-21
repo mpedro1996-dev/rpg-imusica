@@ -3,6 +3,7 @@
 namespace RPGImusica\Http\Controllers;
 
 use Illuminate\Http\Request;
+use RPGImusica\Http\Requests\MinimoDoisRequest;
 use RPGImusica\Http\Services\Iniciativa\IniciativaCarregador;
 
 class IniciativaController extends Controller
@@ -19,7 +20,7 @@ class IniciativaController extends Controller
 
     }
 
-    public function pegarIniciativa(Request $request){
+    public function pegarIniciativa(MinimoDoisRequest $request){
         $ids = $request->get('ids');
 
         $response = $this->rolarIniciativa($ids);
