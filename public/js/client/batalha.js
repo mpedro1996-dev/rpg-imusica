@@ -62,10 +62,12 @@ script = {
     iniciarBotoes:function(){
         this.botaoIniciativa.click(()=>{
             this.botaoIniciativa.prop("disabled",true);
+            this.printLogResolucao("Aguarde...");
             this.ajaxIniciativa();
         })
         this.botaoAtaque.click(()=>{
             this.botaoAtaque.prop("disabled",true);
+            this.printLogResolucao("Aguarde...");
             this.ajaxAtaque();
         })
 
